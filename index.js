@@ -24,3 +24,9 @@ app.get("/policies",function(req,res){
 app.get("/report",function(req,res){
     res.render("report.ejs")
 })
+app.get("/signin",function(req,res){
+    res.render("signin.ejs")
+})
+app.get("/signup",function(req,res){
+    res.render("singup.ejs")
+})
