@@ -7,5 +7,5 @@ app.listen(port, function(){
     console.log(`Server running on port ${port}`)
 })
 app.get("/",function(req,res){
-    res.render("views/index.ejs")
+    res.render("index.ejs")
 })
