@@ -22,5 +22,5 @@ app.get("/policies",function(req,res){
     res.render("policies.ejs")
 })
 app.get("/report",function(req,res){
-    res.render("reports.ejs")
+    res.render("report.ejs")
 })
