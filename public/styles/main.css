@@ -36,11 +36,13 @@
 }
 
 /* Page background */
+
 body {
     background-color: #f5f5f5;
 }
 
 /* Mobile */
+
 @media (max-width: 600px) {
     .specialh1 {
         font-size: 32px;
