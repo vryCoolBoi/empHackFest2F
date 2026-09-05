@@ -1,24 +1,38 @@
-.main_div_container{
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
+.specialh1 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #222;
 }
 
-/* Sign in / sign up card */
-.form-signin {
-    max-width: 330px;
-    padding: 1rem;
-    margin: 2rem auto;
+.specialh1 + p {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-.form-signin .form-floating:focus-within {
-    z-index: 2;
+.specialh2 {
+    width: 80%;
+    max-width: 800px;
+    margin: 30px auto 10px auto;
+    font-size: 24px;
+    color: #222;
 }
 
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+.specialh2 + p {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto 25px auto;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 /* Page background */
@@ -41,9 +55,4 @@ body {
     .specialh2 {
         font-size: 21px;
     }
-}
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
