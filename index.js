@@ -9,3 +9,18 @@ app.listen(port, function(){
 app.get("/",function(req,res){
     res.render("index.ejs")
 })
+app.get("/about",function(req,res){
+    res.render("about.ejs")
+})
+app.get("/leaderboard",function(req,res){
+    res.render("leaderboard.ejs")
+})
+app.get("/maps",function(req,res){
+    res.render("maps.ejs")
+})
+app.get("/policies",function(req,res){
+    res.render("policies.ejs")
+})
+app.get("/report",function(req,res){
+    res.render("reports.ejs")
+})
