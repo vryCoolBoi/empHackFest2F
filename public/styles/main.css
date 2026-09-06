@@ -97,11 +97,13 @@ body {
     justify-content: space-between;
     height: 100vh;
 }
-#login_holder{
+#login_holder {
     display: flex;
-    width: 250px;
-    justify-content: space-between;
-    align-items:center;
+    align-items: center;
+    gap: 10px;
+}
+#login_holder h5 {
+    margin: 0;
 }
 #login_holder > h5{
     margin-bottom: 0;
@@ -109,4 +111,7 @@ body {
 #map {
     height: 600px;
     width: 100%;
+}
+#login_holder h5 {
+    margin: 0;
 }

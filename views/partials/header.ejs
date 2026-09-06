@@ -37,7 +37,8 @@
         <div class="col-md-3 text-end"> <a type="button" href="/signin" class="btn btn-primary me-2">Login</a> <a href="/signup" type="button" class="btn btn-outline-primary">Sign-up</a> </div>
         <% } else { %>
         <div id="login_holder">
-          <h5><%=currentUser%></h5><a type="button" method="POST" href="/signout" class="btn btn-primary ">Login</a>
+          <h5><%=currentUser%></h5>
+          <a type="button" method="POST" href="/signout" class="btn btn-primary ">Log out</a>
         </div>
         <% } %>
       </header>
