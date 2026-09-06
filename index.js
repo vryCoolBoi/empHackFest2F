@@ -28,9 +28,9 @@ app.get("/signin",function(req,res){
     res.render("signin.ejs")
 })
 app.get("/signup",function(req,res){
-    res.render("singup.ejs")
+    res.render("signup.ejs")
 })
 app.post("/submit",function(req,res){
-    
+
     res.redirect("/report")
 })
