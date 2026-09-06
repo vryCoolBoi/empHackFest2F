@@ -51,6 +51,7 @@ app.get("/signup", function (req, res) {
 
 app.post("/submit", upload.single("evidence"), function (req, res) {
   if (!currentUser) {
+    return
   }
   let incident_type = req.body["incident-type"];
   let description = req.body["report_description"];

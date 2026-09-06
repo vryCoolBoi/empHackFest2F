@@ -32,11 +32,11 @@
           console.log(report)
           // TODO Fix its html and make it look nice (add styles on the element)
           L.marker([latitude, longitude]).addTo(map).bindPopup(`
-                        <strong>${report.incident_type}</strong>
+                        <strong>Type: ${report.incident_type}</strong>
                         <br>
                         ${report.description}
-                        <strong>${report.hazard}</strong>
-                        <strong>${report.time}</strong>
+                        <strong>Hazard: ${report.hazard}</strong>
+                        <strong>Time: ${report.time}</strong>
                         <img src="${report.evidence}"></img>
                     `);
 
