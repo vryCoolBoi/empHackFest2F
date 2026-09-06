@@ -36,14 +36,16 @@ app.get("/signup",function(req,res){
 })
 app.post("/submit",function(req,res){
     res.render("/report",{isLoggedIn,currentUser})
-        
+
 })
 app.post("/create",async function(req,res){
     console.log("Trying to create")
+    let username = req.body.username
     let email = req.body.email
     let password = req.body.password
     const hash = await bcrypt.hash(password,11)
     users.push({
+        username,
         email,
         password: hash 
     })
@@ -51,10 +53,10 @@ app.post("/create",async function(req,res){
     
 })
 app.post("/login",async function(req,res){
-    let email = req.body.email
+    let username = req.body.username
     let password = req.body.password
     console.log("attempted")
-    const user = users.find(u => u.email === email)
+    const user = users.find(u => u.username === username)
     if (!user){
         res.render("signin.ejs",{isLoggedIn,currentUser, status:1})
         return
@@ -65,10 +67,10 @@ app.post("/login",async function(req,res){
         return
     }
     isLoggedIn = true;
-    currentUser= email
+    currentUser= username
     res.render("signin.ejs",{isLoggedIn,currentUser,status:3})
     
     // Status: 1: User not found 2: Unauthorized 3: Successful
-
+    
     
 })

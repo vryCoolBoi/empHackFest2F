@@ -1,3 +1,15 @@
 <%- include('partials/header.ejs') %>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<script>
+    //L is from the leaflet
+    //The map is an object made using the leaflet in order to set the map and then set the view
+    //ITS EXPLAINATION: "Create a map in my #map element and initially center it at these coordinates with a zoom level of 13.
+    const map = L.map("map").setView([47.6749, -122.1215], 13);
+    // Gives the actuale imagery from the website
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+</script>
 <%- include('partials/footer.ejs') %>
