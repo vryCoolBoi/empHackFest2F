@@ -3,6 +3,7 @@ import bcrypt from "bcrypt"
 const app = express()
 const port = 3000;
 const users = []
+const reports = []
 let isLoggedIn = false;
 let currentUser = "";
 app.use(express.static("public"))
@@ -34,17 +35,32 @@ app.get("/signin",function(req,res){
 app.get("/signup",function(req,res){
     res.render("signup.ejs",{isLoggedIn,currentUser})
 })
+
 app.post("/submit",function(req,res){
-    let incident_type= req.body.incident-type;
-    let description = req.body.report-description;
-    let time_prior = req.body.crisis-time;
-    let hazard = req.body.hazard;
-    let evidence = req.body.evidence;
-    let time_prior_number;
+    let incident_type= req.body["incident-type"];
+    let description = req.body["report_description"];
+    let incident_time = req.body["crisis-time"];
+    console.log(req.body)
+    let hazard = req.body["hazard"];
+    let evidence = req.body["evidence"];
+    let location = [req.body.latitude, req.body.longitude]
+   reports.push({
+    id: reports.length,
+    incident_time,
+    location,
+    currentUser,
+    incident_type,
+    description,
+    hazard,
+    evidence
+   })
+    // <option value="">When did you observe it?</option>
+    //     <option value="just-now">Just now</option>
+    //     <option value="last-hour">Within the last hour</option>
+    //     <option value="today">Earlier today</option>
     //TODO turn the time prior number into an actual number
     //TODO add count to the user to give credit
-    let current_time = new Date(now.getTime() - time_prior_number);
-    res.render("/report",{isLoggedIn,currentUser})
+    res.render("report.ejs",{isLoggedIn,currentUser})
 
 })
 app.post("/create",async function(req,res){
@@ -83,3 +99,7 @@ app.post("/login",async function(req,res){
     
     
 })
+//store reports on the api now going here will return reports as a json
+app.get("/api/reports", function(req, res) {
+    res.json(reports);
+});

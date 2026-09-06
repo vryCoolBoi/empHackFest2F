@@ -1,18 +1,51 @@
 <%- include('partials/header.ejs') %>
 <!-- TODO Use the report's location data in order to plot locations-->
- <!-- TODO When you click on a marked location it should show isssues and problems there-->
-  <!-- TODO Refer to notebook for gui-->
+<!-- TODO When you click on a marked location it should show isssues and problems there-->
+<!-- TODO Refer to notebook for gui-->
 <div id="map"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-    //L is from the leaflet
-    //The map is an object made using the leaflet in order to set the map and then set the view
-    //ITS EXPLAINATION: "Create a map in my #map element and initially center it at these coordinates with a zoom level of 13.
-    const map = L.map("map").setView([47.6749, -122.1215], 13);
-    // Gives the actuale imagery from the website
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors"
-    }).addTo(map);
+  console.log("MY MAP JS FILE LOADED");
+  //L is from the leaflet
+  //The map is an object made using the leaflet in order to set the map and then set the view
+  //ITS EXPLAINATION: "Create a map in my #map element and initially center it at these coordinates with a zoom level of 13.
+  const map = L.map("map").setView([47.6749, -122.1215], 13);
+  // Gives the actuale imagery from the website
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+  }).addTo(map);
+  function updateMap() {
+    console.log("Update")
+    fetch("/api/reports")
+      .then((response) => response.json())
+      .then((reports) => {
+        reports.forEach((report) => {
+          const displayedReports = new Set();
+          //check if the report is already displayed
+          if (displayedReports.has(report.id)) {
+            return;
+          }
+          //deconstruct latitude and longitude from report location
+          const [latitude, longitude] = report.location;
+          //add a marker
+          console.log(report)
+          // TODO Fix its html and make it look nice (add styles on the element)
+          L.marker([latitude, longitude]).addTo(map).bindPopup(`
+                        <strong>${report.incident_type}</strong>
+                        <br>
+                        ${report.description}
+                        <strong>${report.hazard}</strong>
+                        <strong>${report.time}</strong>
+                    `);
+
+          displayedReports.add(report.id);
+        });
+      });
+  }
+  console.log("ts shall run")
+  updateMap();
+
+  setInterval(updateMap, 5000);
 </script>
 <%- include('partials/footer.ejs') %>

@@ -14,16 +14,9 @@
         <option value="accident">Accident</option>
         <option value="other">Other</option>
       </select>
-      <div id="other-description" style="display: none">
-      </div>
+      <div id="other-description" style="display: none"></div>
 
-      <select id="crisis-time" name="crisis-time">
-        <option value="">When did you observe it?</option>
-        <option value="just-now">Just now</option>
-        <option value="last-hour">Within the last hour</option>
-        <option value="today">Earlier today</option>
-        <option value="not-sure">Not sure</option>
-      </select>
+      <input type="time" id="crisis-time" name="crisis-time" />
       <select id="hazard" name="hazard" required>
         <option value="" disabled selected>Select a hazard</option>
         <option value="blocked-road">Blocked road</option>
