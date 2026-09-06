@@ -1,9 +1,19 @@
 import express from "express"
 import bcrypt from "bcrypt"
+import multer from "multer";
 const app = express()
 const port = 3000;
 const users = []
 const reports = []
+const storage = multer.diskStorage({
+    destination: function(req,file,cb){
+        cb(null,'public/uploads')
+    },
+    filename: function(req,file,cb){
+        cb(null,file.originalname)
+    }
+})
+const upload = multer({storage})
 let isLoggedIn = false;
 let currentUser = "";
 app.use(express.static("public"))
@@ -36,13 +46,13 @@ app.get("/signup",function(req,res){
     res.render("signup.ejs",{isLoggedIn,currentUser})
 })
 
-app.post("/submit",function(req,res){
+app.post("/submit",upload.single("evidence"),function(req,res){
     let incident_type= req.body["incident-type"];
     let description = req.body["report_description"];
     let incident_time = req.body["crisis-time"];
     console.log(req.body)
     let hazard = req.body["hazard"];
-    let evidence = req.body["evidence"];
+    let evidence = req.file ? "public/uploads/" + req.file.filename : null;
     let location = [req.body.latitude, req.body.longitude]
    reports.push({
     id: reports.length,
