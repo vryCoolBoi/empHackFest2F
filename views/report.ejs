@@ -56,25 +56,18 @@
         name="evidence"
         accept="image/*,video/*"
       />
-       <label for="address">Where did this happen?</label>
 
-        <input
-          type="text"
-          id="address"
-          name="address"
-          placeholder="Search for an address or place..."
-          autocomplete="off"
-          required
-        />
-
-        <button
-          type="button"
-          id="use-location"
-        >
+      <div>
+        <button type="button" onclick="getLocation()">
           Use my current location
         </button>
 
-        <div id="report-map"></div>
+        <p id="location-display">Location not selected</p>
+
+        <input type="hidden" id="latitude" name="latitude" />
+        <input type="hidden" id="longitude" name="longitude" />
+      </div>
+
       <div style="display: flex; justify-content: center" class="btn holder">
         <button type="submit" method="POST" class="btn btn-primary btn-lg px-4">
           Submit
@@ -85,6 +78,32 @@
 </div>
 
 <script>
+  function getLocation() {
+    if (!navigator.geolocation) {
+      document.getElementById("location-display").textContent =
+        "Location is not supported by this browser.";
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Put the location into the form
+        document.getElementById("latitude").value = latitude;
+        document.getElementById("longitude").value = longitude;
+
+        // Show it to the user
+        document.getElementById("location-display").textContent =
+          `Location: ${latitude}, ${longitude}`;
+      },
+      function (error) {
+        document.getElementById("location-display").textContent =
+          "Could not get your location.";
+      },
+    );
+  }
   const incidentSelect = document.getElementById("incident-type");
   const otherDescription = document.getElementById("other-description");
 
