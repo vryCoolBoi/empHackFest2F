@@ -16,7 +16,7 @@
     attribution: "&copy; OpenStreetMap contributors",
   }).addTo(map);
   function updateMap() {
-    console.log("Update")
+    console.log("Update");
     fetch("/api/reports")
       .then((response) => response.json())
       .then((reports) => {
@@ -29,22 +29,22 @@
           //deconstruct latitude and longitude from report location
           const [latitude, longitude] = report.location;
           //add a marker
-          console.log(report)
+          console.log(report);
           // TODO Fix its html and make it look nice (add styles on the element)
           L.marker([latitude, longitude]).addTo(map).bindPopup(`
-                        <strong>Type: ${report.incident_type}</strong>
-                        <br>
-                        ${report.description}
-                        <strong>Hazard: ${report.hazard}</strong>
-                        <strong>Time: ${report.time}</strong>
-                        <img src="${report.evidence}"></img>
+                        <strong style= "display:block">Type: ${report.incident_type}</strong>
+                        <strong style= "display:block">Hazard: ${report.hazard}</strong>
+                        <strong style= "display:block">Time: ${report.time}</strong>
+                        <strong style= "display:block overflow-wrap: anywhere;
+    word-break: break-word; width: 400px">Description: ${report.description}</strong>
+                        
                     `);
 
           displayedReports.add(report.id);
         });
       });
   }
-  console.log("ts shall run")
+  console.log("ts shall run");
   updateMap();
 
   setInterval(updateMap, 5000);
