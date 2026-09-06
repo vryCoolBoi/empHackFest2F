@@ -56,6 +56,25 @@
         name="evidence"
         accept="image/*,video/*"
       />
+       <label for="address">Where did this happen?</label>
+
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Search for an address or place..."
+          autocomplete="off"
+          required
+        />
+
+        <button
+          type="button"
+          id="use-location"
+        >
+          Use my current location
+        </button>
+
+        <div id="report-map"></div>
       <div style="display: flex; justify-content: center" class="btn holder">
         <button type="submit" method="POST" class="btn btn-primary btn-lg px-4">
           Submit

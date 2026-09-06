@@ -7,27 +7,35 @@
         Login to your account
       </h1>
       <p class="col-lg-10 fs-4">
-        Please enter your email and password to access your account. If you don't have an account, you can sign up for one.
+        Please enter your email and password to access your account. If you
+        don't have an account, you can sign up for one.
       </p>
     </div>
     <div class="col-md-10 mx-auto col-lg-5">
-      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+      <% if (locals.status) { %>
+
+      <% if (status == 1) { %>
+      <div id="loginError" class="alert alert-danger" role="alert">
+        No user found with that email.
+      </div>
+      <% } else if (status == 2) { %>
+      <div id="loginError" class="alert alert-danger" role="alert">
+        Incorrect Password
+      </div>
+
+      <% } else if (status == 3){%>
+      <div id="loginError" class="alert alert-success" role="alert">
+        Login Successful
+      </div>
+      <% } %>
+      <% } %>
+      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" method="POST" action="/login">
         <div class="form-floating mb-3">
-          <input
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-          />
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email"/>
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3">
-          <input
-            type="password"
-            class="form-control"
-            id="floatingPassword"
-            placeholder="Password"
-          />
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"/>
           <label for="floatingPassword">Password</label>
         </div>
         <div class="checkbox mb-3">

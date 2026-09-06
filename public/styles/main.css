@@ -97,3 +97,12 @@ body {
     justify-content: space-between;
     height: 100vh;
 }
+#login_holder{
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    align-items:center;
+}
+#login_holder > h5{
+    margin-bottom: 0;
+}
