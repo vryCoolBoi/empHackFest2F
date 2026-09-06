@@ -116,7 +116,3 @@ body {
     margin: 0;
 }
 
-
-p::first-letter{
-    color: blue;
-}

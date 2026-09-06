@@ -1,3 +1,109 @@
 <%- include('partials/header.ejs') %>
-<!-- TODO  make a leadership standings for top 10 places-->
+
+<div class="leaderboard-container">
+    <h1>Leaderboard</h1>
+
+    <div class="leaderboard-table">
+        <table class="table table-striped table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <% if (topUsers.length >= 1) { %>
+                      <td><%=topUsers[0].username%></td>
+                      <td><%=topUsers[0].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <% if (topUsers.length >= 2) { %>
+                      <td><%=topUsers[1].username%></td>
+                      <td><%=topUsers[1].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <% if (topUsers.length >= 3) { %>
+                      <td><%=topUsers[2].username%></td>
+                      <td><%=topUsers[2].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <% if (topUsers.length >= 4) { %>
+                      <td><%=topUsers[3].username%></td>
+                      <td><%=topUsers[3].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <% if (topUsers.length >= 5) { %>
+                      <td><%=topUsers[4].username%></td>
+                      <td><%=topUsers[4].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <% if (topUsers.length >= 6) { %>
+                      <td><%=topUsers[5].username%></td>
+                      <td><%=topUsers[5].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <% if (topUsers.length >= 7) { %>
+                      <td><%=topUsers[6].username%></td>
+                      <td><%=topUsers[6].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <% if (topUsers.length >= 8) { %>
+                      <td><%=topUsers[7].username%></td>
+                      <td><%=topUsers[7].points%></td>
+                    <% } else {%>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <%- include('partials/footer.ejs') %>
