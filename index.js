@@ -55,8 +55,8 @@ app.post("/submit", upload.single("evidence"), function (req, res) {
   }
   let incident_type = req.body["incident-type"];
   let description = req.body["report_description"];
-  let incident_time = req.body["crisis-time"];
-  console.log(req.body);
+  let incident_time = req.body.time;
+  console.log(incident_time);
   let hazard = req.body["hazard"];
   let evidence = req.file ? "public/uploads/" + req.file.filename : null;
   let location = [req.body.latitude, req.body.longitude];

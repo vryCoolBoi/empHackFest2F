@@ -29,12 +29,12 @@
           //deconstruct latitude and longitude from report location
           const [latitude, longitude] = report.location;
           //add a marker
-          console.log(report);
+          console.log(reports);
           // TODO Fix its html and make it look nice (add styles on the element)
           L.marker([latitude, longitude]).addTo(map).bindPopup(`
                         <strong style= "display:block">Type: ${report.incident_type}</strong>
                         <strong style= "display:block">Hazard: ${report.hazard}</strong>
-                        <strong style= "display:block">Time: ${report.time}</strong>
+                        <strong style= "display:block">Time: ${report.incident_time}</strong>
                         <strong style= "display:block overflow-wrap: anywhere;
     word-break: break-word; width: 400px">Description: ${report.description}</strong>
                         
