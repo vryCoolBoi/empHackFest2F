@@ -1,8 +1,80 @@
 <%- include('partials/header.ejs') %>
+<div id="report_holder">
+  <div id="report_div">
+    <h1 id="crisis_title">File a Report</h1>
+    <form action="/submit" method="POST" id="report_details">
+      <select id="incident-type" name="incident-type">
+        <option value="">What type of incident is this?</option>
+        <option value="fire">Fire</option>
+        <option value="flood">Flood</option>
+        <option value="severe-weather">Severe Weather</option>
+        <option value="road-closure">Road Closure</option>
+        <option value="power-outage">Power Outage</option>
+        <option value="accident">Accident</option>
+        <option value="other">Other</option>
+      </select>
+      <div id="other-description" style="display: none">
+        <input
+          type="text"
+          id="situation"
+          name="situation"
+          placeholder="Describe the situation..."
+        />
+      </div>
 
+      <select id="crisis-time" name="crisis-time">
+        <option value="">When did you observe it?</option>
+        <option value="just-now">Just now</option>
+        <option value="last-hour">Within the last hour</option>
+        <option value="today">Earlier today</option>
+        <option value="not-sure">Not sure</option>
+      </select>
+      <select id="hazard" name="hazard" required>
+        <option value="" disabled selected>Select a hazard</option>
+        <option value="blocked-road">Blocked road</option>
+        <option value="smoke">Smoke</option>
+        <option value="flooding">Flooding</option>
+        <option value="damaged-building">Damaged building</option>
+        <option value="power-outage">Power outage</option>
+        <option value="fallen-tree">Fallen tree</option>
+        <option value="debris">Debris</option>
+        <option value="gas-leak">Gas leak</option>
+        <option value="unsafe-structure">Unsafe structure</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea
+        placeholder="Type in a brief description."
+        id="report_description"
+        name="report_description"
+        rows="3"
+      ></textarea>
+      <label for="evidence">Photo or video evidence</label>
 
+      <input
+        type="file"
+        id="evidence"
+        name="evidence"
+        accept="image/*,video/*"
+      />
+      <div style="display: flex; justify-content: center" class="btn holder">
+        <button type="submit" method="POST" class="btn btn-primary btn-lg px-4">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
+<script>
+  const incidentSelect = document.getElementById("incident-type");
+  const otherDescription = document.getElementById("other-description");
 
-
+  incidentSelect.addEventListener("change", function () {
+    if (this.value === "other") {
+      otherDescription.style.display = "block";
+    } else {
+      otherDescription.style.display = "none";
+    }
+  });
+</script>
 <%- include('partials/footer.ejs') %>
-    
