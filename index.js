@@ -35,6 +35,14 @@ app.get("/signup",function(req,res){
     res.render("signup.ejs",{isLoggedIn,currentUser})
 })
 app.post("/submit",function(req,res){
+    let incident_type= req.body.incident-type;
+    let description = req.body.report-description;
+    let time_prior = req.body.crisis-time;
+    let hazard = req.body.hazard;
+    let evidence = req.body.evidence;
+    let time_prior_number;
+    //TODO turn the time prior number into an actual number
+    let current_time = new Date(now.getTime() - time_prior_number);
     res.render("/report",{isLoggedIn,currentUser})
 
 })
