@@ -115,3 +115,8 @@ body {
 #login_holder h5 {
     margin: 0;
 }
+
+
+p::first-letter{
+    color: blue;
+}
