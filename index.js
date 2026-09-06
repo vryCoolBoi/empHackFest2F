@@ -30,3 +30,7 @@ app.get("/signin",function(req,res){
 app.get("/signup",function(req,res){
     res.render("singup.ejs")
 })
+app.post("/submit",function(req,res){
+    
+    res.redirect("/report")
+})
