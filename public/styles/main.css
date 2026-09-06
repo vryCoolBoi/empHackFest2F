@@ -9,7 +9,7 @@
 .specialh1 + p {
     width: 80%;
     max-width: 800px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 10px auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
@@ -21,7 +21,7 @@
 .specialh2 {
     width: 80%;
     max-width: 800px;
-    margin: 30px auto 10px auto;
+    margin: 10px auto 5px auto;
     font-size: 24px;
     color: #222;
 }
@@ -29,7 +29,7 @@
 .specialh2 + p {
     width: 80%;
     max-width: 800px;
-    margin: 0 auto 25px auto;
+    margin: 0 auto 5px auto;
     color: #555;
     font-size: 16px;
     line-height: 1.6;
