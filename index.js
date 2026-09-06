@@ -42,6 +42,7 @@ app.post("/submit",function(req,res){
     let evidence = req.body.evidence;
     let time_prior_number;
     //TODO turn the time prior number into an actual number
+    //TODO add count to the user to give credit
     let current_time = new Date(now.getTime() - time_prior_number);
     res.render("/report",{isLoggedIn,currentUser})
 
